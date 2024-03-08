@@ -1,4 +1,4 @@
-import 'package:api_rest_consume/src/my_home_page.dart';
+import 'package:api_rest_consume/src/json_placeholdeer/my_home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
