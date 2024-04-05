@@ -1,9 +1,15 @@
-import 'package:api_rest_consume/src/json_placeholdeer/stores/to_do_store.dart';
+import 'package:api_rest_consume/src/json_placeholdeer/models/to_do_model.dart';
+import 'package:api_rest_consume/src/json_placeholdeer/services/to_do_service.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() async {
-  final store = ToDoStore();
+  group('ToDoService.getToDos', () {
+    test('Deve retornar uma lista de ToDoModel', () async {
+      final service = ToDoService();
 
-  await store.getAllToDos();
+      final result = await service.getToDos();
 
-  print(store.toDos[4].title);
+      expect(result, isA<List<ToDoModel>>());
+    });
+  });
 }

@@ -16,7 +16,9 @@ class _MyHomePageState extends State<MyHomePage> {
     final toDos = toDoStore.toDos;
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+      ),
       body: ListView.builder(
         itemCount: toDos.length,
         itemBuilder: (_, index) {
