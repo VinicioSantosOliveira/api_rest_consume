@@ -5,8 +5,7 @@ class RemoteToDoDatasource {
   final dio = Dio();
 
   Future<dynamic> getToDos() async {
-    final response =
-        await dio.get("https://jsonplaceholder.typicode.com/todos");
+    final response = await dio.get("https://jsonplaceholder.typicode.com/todos");
     return response.data;
   }
 
@@ -16,8 +15,7 @@ class RemoteToDoDatasource {
       'title': model.title,
     };
 
-    final response =
-        await dio.put("https://jsonplaceholder.typicode.com/todos", data: data);
+    final response = await dio.put("https://jsonplaceholder.typicode.com/todos", data: data);
     return response.data;
   }
 }

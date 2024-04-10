@@ -2,11 +2,12 @@ import 'package:api_rest_consume/src/json_placeholdeer/models/to_do_model.dart';
 import 'package:dio/dio.dart';
 
 class ToDoService {
-  final dio = Dio();
+  final Dio dio;
+
+  ToDoService(this.dio);
 
   Future<List<ToDoModel>> getToDos() async {
-    final response =
-        await dio.get("https://jsonplaceholder.typicode.com/todos");
+    final response = await dio.get("https://jsonplaceholder.typicode.com/todos");
     final list = response.data as List;
 
     //(e) => ToDoModel.fromJson(e)

@@ -12,17 +12,32 @@ class _MyHomePageState extends State<MyHomePage> {
   final toDoStore = ToDoStore();
 
   @override
+  void initState() {
+    super.initState();
+    toDoStore.addListener(() {
+      setState(() {});
+    });
+    toDoStore.getAllToDos();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final toDos = toDoStore.toDos;
+    final todos = toDoStore.toDos;
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
       ),
       body: ListView.builder(
-        itemCount: toDos.length,
+        itemCount: todos.length,
         itemBuilder: (_, index) {
+          final todo = todos[index];
           
+          return CheckboxListTile(
+            title: Text(todo.title),
+            value: todo.isChecked,
+            onChanged: (value) {},
+          );
         },
       ),
     );
