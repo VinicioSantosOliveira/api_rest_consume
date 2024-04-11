@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:api_rest_consume/src/json_placeholdeer/models/to_do_model.dart';
 import 'package:api_rest_consume/src/json_placeholdeer/services/to_do_service.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
@@ -12,11 +10,19 @@ class DioMock extends Mock implements DioForNative {}
 class ResponseMock extends Mock implements Response {}
 
 void main() async {
+  late ResponseMock response;
+  late DioMock dio;
+  
+  setUp(() {
+    response = ResponseMock();
+    dio = DioMock();
+  });
+
+  tearDown(() {});
+
   group('ToDoService.getToDos', () {
     test('Deve retornar uma lista de ToDoModel', () async {
-      final response = ResponseMock();
       when(() => response.data).thenReturn(jsonDecode(jsonText));
-      final dio = DioMock();
       when(() => dio.get(any())).thenAnswer((_) async => response);
 
       final service = ToDoService(dio);
